@@ -7,7 +7,8 @@ trigger:
 - master
 
 pool:
-  vmImage: 'On-Premises/DEVVM'
+  name: On-Premises
+  vmImage: 'DEVVM'
 
 variables:
   buildConfiguration: 'Release'
