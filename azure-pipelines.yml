@@ -4,11 +4,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- master
+- master123
 
 pool:
   name: On-Premises
-  vmImage: 'DEVVM'
 
 variables:
   buildConfiguration: 'Release'
