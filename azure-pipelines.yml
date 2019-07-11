@@ -23,7 +23,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      del a/SchedulesCli.pdb
+      del a\SchedulesCli.pdb
       rename a OWLSchedules
     workingDirectory: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
