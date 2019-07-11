@@ -20,10 +20,6 @@ steps:
     zipAfterPublish: True
     includesymbols: False
     publishWebProjects: False
-- task: CmdLine@2
-  inputs:
-    script: |
-      del a\SchedulesCli.pdb
     workingDirectory: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
