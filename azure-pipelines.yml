@@ -20,7 +20,6 @@ steps:
     zipAfterPublish: True
     includesymbols: False
     publishWebProjects: False
-    workingDirectory: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
