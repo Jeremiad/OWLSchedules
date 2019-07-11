@@ -16,7 +16,9 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    arguments: '-r win-x64 -c $(buildConfiguration) /p:PublishSingleFile=true --output $(build.artifactstagingdirectory)'
+    arguments: '-r win-x64 -c $(buildConfiguration) /p:PublishSingleFile=true --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
+    includesymbols: False
 
 - task: PublishBuildArtifacts@1
   inputs:
