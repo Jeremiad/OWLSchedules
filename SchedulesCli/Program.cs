@@ -9,8 +9,6 @@ namespace SchedulesCli
     {
         static async Task Main(string[] args)
         {
-            BrowserStart.LaunchBrowser();
-
             GlobalConfiguration.Configuration
                 .UseColouredConsoleLogProvider()
                 .UseMemoryStorage();

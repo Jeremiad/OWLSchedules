@@ -8,7 +8,7 @@ namespace SchedulesCli
         {
             try
             {
-                Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe2", "https://www.twitch.tv/overwatchleague");
+                Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", "https://www.twitch.tv/overwatchleague");
             }
             catch (System.ComponentModel.Win32Exception)
             {
