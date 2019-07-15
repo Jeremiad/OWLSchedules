@@ -20,12 +20,6 @@ steps:
     zipAfterPublish: False
     includesymbols: False
     publishWebProjects: False
-- task: CmdLine@2
-  inputs:
-    script: |
-      del a/SchedulesCli.pdb
-      rename a OWLSchedules
-    workingDirectory: '$(Build.ArtifactStagingDirectory)'
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
