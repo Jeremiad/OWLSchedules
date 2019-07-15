@@ -17,9 +17,22 @@ steps:
   inputs:
     command: 'publish'
     arguments: '-r win-x64 -c $(buildConfiguration) /p:PublishSingleFile=true --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
+    zipAfterPublish: False
     includesymbols: False
     publishWebProjects: False
+- task: CmdLine@2
+  inputs:
+    script: |
+      del a/SchedulesCli.pdb
+      rename a OWLSchedules
+    workingDirectory: '$(Build.ArtifactStagingDirectory)'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
