@@ -16,7 +16,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    arguments: '-r win-x64 -c $(buildConfiguration) /p:PublishSingleFile=true --output $(Build.ArtifactStagingDirectory)'
+    arguments: '-r win-x64 -c $(buildConfiguration) /p:PublishSingleFile=true /p:PublishTrimmed=true --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: False
     includesymbols: False
     publishWebProjects: False
