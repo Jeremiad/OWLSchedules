@@ -16,10 +16,25 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    arguments: '-r win-x64 -c $(buildConfiguration) /p:PublishSingleFile=true --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
+    arguments: '-r win-x64 -c $(buildConfiguration) /p:PublishSingleFile=true /p:PublishTrimmed=true --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: False
     includesymbols: False
     publishWebProjects: False
+- task: CmdLine@2
+  inputs:
+    script: 'del SchedulesCli.pdb'
+    workingDirectory: '$(Build.ArtifactStagingDirectory)'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/OWLSchedules.zip'
+    replaceExistingArchive: true
+- task: CmdLine@2
+  inputs:
+    script: 'del SchedulesCli.exe'
+    workingDirectory: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
